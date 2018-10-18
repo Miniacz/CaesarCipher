@@ -131,16 +131,16 @@ public class ccGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_userInputActionPerformed
 
     private void convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertButtonActionPerformed
-        if (Pattern.matches("[\\w\\s.,;:]+", userInput.getText())) {
+//      zabezpieczenie inputu
+        if (Pattern.matches("[\\w\\s.,]+", userInput.getText())) {
             try {
             Encoder.encodeTarget(userInput.getText(), shiftPicker.getValue());
-//            encodedText.setText("");
             encodedText.setText(Encoder.printEncodedString(Encoder.letterCodeList));        
         }
         catch (IOException e) { 
             encodedText.setText("IOException occured");}
         } else {
-            userInput.setText("Insert proper text format.");
+            userInput.setText("You are allowed to enter only valid characters: a-z, A-Z, 0-9 and dot or comma.");
         }
         
         
